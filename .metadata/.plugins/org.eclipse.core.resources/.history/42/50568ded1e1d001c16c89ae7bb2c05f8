@@ -1,0 +1,13 @@
+package com.app.ovm.services.interfaces;
+
+import com.app.ovm.pojos.entity.Cart;
+
+public interface ICartService {
+
+	Cart getCartByUserId();
+
+	Cart updateCartByUserId();
+
+	Cart getCartByUserId(int userId);
+
+}

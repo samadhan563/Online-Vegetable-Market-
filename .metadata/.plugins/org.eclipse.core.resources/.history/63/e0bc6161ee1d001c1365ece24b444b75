@@ -1,0 +1,10 @@
+package com.app.ovm.services.interfaces;
+
+import com.app.ovm.dto.UserProfileInDto;
+import com.app.ovm.pojos.entity.UserAddress;
+
+public interface IUserAddressService {
+
+	UserAddress addUserAddress(UserProfileInDto newUser);
+
+}

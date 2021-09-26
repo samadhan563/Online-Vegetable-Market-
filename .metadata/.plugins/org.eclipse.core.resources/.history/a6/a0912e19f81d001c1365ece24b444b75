@@ -1,0 +1,9 @@
+package com.app.ovm.dto;
+
+public class InChargeRequestDto {
+
+	public InChargeRequestDto() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,58 @@
+package com.app.ovm.services.classes;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
+import org.omg.CORBA.UserException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.ovm.dao.IUserRepository;
+import com.app.ovm.dto.LoginRequest;
+import com.app.ovm.pojos.entity.User;
+import com.app.ovm.pojos.entity.UserProfile;
+import com.app.ovm.services.interfaces.IUserService;
+
+@Service
+@Transactional
+public class UserServiceImpl implements IUserService {
+	@Autowired
+	private IUserRepository userRepository;
+
+	@Override
+	public User autenticateUser(LoginRequest loginRequest) {
+
+		return userRepository.autenticateUser(loginRequest.getUserName(), loginRequest.getPassword()).get();
+	}
+
+	@Override
+	public List<User> fetchAllUsers() {
+
+		return userRepository.findAll();
+	}
+
+	@Override
+	public User registerNewUser(User user) {
+
+		return userRepository.save(user);
+	}
+
+	@Override
+	public User updateOldUser(User user,int userId) {
+		User oldUser = userRepository.findById(userId).get();
+		return oldUser;
+	}
+	
+	
+	@Override
+	public UserProfile getUserProfile(int userId) {
+		User user = userRepository.findById(userId).get();
+		UserProfile optionalUserProfile = userProfileRepository.getUserProfile(user).get;
+		UserProfile userProfile = optionalUserProfile
+				.orElseThrow(() -> new UserException("user profile  no found .... " + userId));
+		return userProfile;
+	}
+
+}

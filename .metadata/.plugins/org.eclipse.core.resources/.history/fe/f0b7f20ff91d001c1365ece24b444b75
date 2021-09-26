@@ -1,0 +1,150 @@
+package com.app.ovm.services.classes;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.ovm.dao.ICartRepository;
+import com.app.ovm.dao.IOrderDetailsRepository;
+import com.app.ovm.dao.IOrderRepository;
+import com.app.ovm.dao.IPaymentRepository;
+import com.app.ovm.dao.IProductRepository;
+import com.app.ovm.dao.IUserRepository;
+import com.app.ovm.dto.InChargeRequestDto;
+import com.app.ovm.dto.PaymentDto;
+import com.app.ovm.pojos.entity.Cart;
+import com.app.ovm.pojos.entity.OrderDetails;
+import com.app.ovm.pojos.entity.Orders;
+import com.app.ovm.pojos.entity.Payment;
+import com.app.ovm.pojos.entity.Product;
+import com.app.ovm.pojos.entity.User;
+import com.app.ovm.pojos.enums.Currency;
+import com.app.ovm.pojos.enums.Gateway;
+import com.app.ovm.pojos.enums.OrderStatus;
+import com.app.ovm.pojos.enums.PaymentStatus;
+import com.app.ovm.services.interfaces.IOrderService;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
+
+@Service
+@Transactional
+public class OrderServiceImpl implements IOrderService {
+	@Autowired
+	private IUserRepository userRepository;
+
+	@Autowired
+	private IOrderRepository orderRepository;
+
+	@Autowired
+	private IOrderDetailsRepository detailsRepository;
+	
+	@Autowired
+	private ICartRepository cartRepository;
+	
+	@Autowired
+	private IProductRepository productRepository;
+	
+	@Autowired
+	private IPaymentRepository paymentRepository;
+
+	@Override
+	public List<OrderDetails> addOrderDetails(int userId, int  orderId) {
+		List<OrderDetails> orderDetails = new ArrayList<OrderDetails>();
+		Orders orders = orderRepository.findById(orderId).get();
+		User user = userRepository.findById(userId).get();
+		List<Cart> lineItems = cartRepository.getCartByUserId(userId);
+		for (Cart line : lineItems) {
+			Product product = productRepository.findByProductName(line.getProductName()).get();
+			if (product.getAvailableQuantity() > 0 && product.getAvailableQuantity() >= line.getAvailableQuantity()) {
+				int qty = product.getAvailableQuantity() - line.getAvailableQuantity();
+				product.setAvailableQuantity(qty);
+				OrderDetails booking = new OrderDetails();
+				booking.setProductName(line.getProductName());
+				booking.setPricePerKg(line.getPricePerKg());
+				booking.setDiscountOffer(line.getDiscountOffer());
+				booking.setAvailableQuantity(line.getAvailableQuantity());
+				booking.setFinalPrice(line.getFinalPrice());
+				booking.setSelectedUser(user);
+				booking.setSelectedOrder(orders);
+				booking.setDescription(line.getDescription());
+				orderDetails.add(detailsRepository.save(booking));
+			}
+		}
+		cartRepository.deleteByUserId(userId);
+		return orderDetails;
+	}
+
+	@Override
+	public int addOrder(int userId, double totalPrice) {
+		System.out.println("rent booking");
+		Orders orders = new Orders();
+		orders.setOrderDeliveryStatus(OrderStatus.PENDING);
+		orders.setOrderDate(LocalDate.now());
+		orders.setDeliveryDate(LocalDate.now());
+		orders.setSelectedUser(userRepository.findById(userId).get());
+		orders.setTotalPrice(totalPrice);
+		System.out.println(orders);
+		int id = orderRepository.save(orders).getId();
+		return id;
+	}
+	
+	
+	@Override
+	public Payment addPaymentDetails(PaymentDto paymentDto) {
+		System.out.println(paymentDto);
+		Payment payment = new Payment();
+		payment.setPaymentDate(LocalDate.now());
+		payment.setPaymentStatus(PaymentStatus.PAID);
+		if (paymentDto.getPaymentGatway().equals("CREDIT"))
+			payment.setPaymentGatway(Gateway.CARD);
+		if (paymentDto.getPaymentGatway().equals("COD")) {
+			payment.setPaymentGatway(Gateway.CASH_ON_DELIVERY);
+			payment.setPaymentStatus(PaymentStatus.PENDING);
+		}
+		User user = userRepository.findById(paymentDto.getUserId()).get();
+		payment.setUser(user);
+		Orders booking = orderRepository.findById(paymentDto.getOrderId()).get();
+		payment.setRentBooking(booking);
+		payment.setAmount(booking.getTotalPrice());
+		return paymentRepository.save(payment);
+	}
+	
+	
+	@Override
+	public Payment addPaymentDetailsCard(InChargeRequestDto chargeRequest) throws StripeException {
+		List<Object> paymentMethodTypes = new ArrayList<>();
+		paymentMethodTypes.add("card");
+		Map<String, Object> chargeParams = new HashMap<>();
+		chargeParams.put("amount", Math.round(chargeRequest.getAmount()));
+		System.out.println(Math.round(chargeRequest.getAmount()));
+		chargeParams.put("currency", chargeRequest.getCurrency());
+		chargeParams.put("description", chargeRequest.getDescription());
+		chargeParams.put("receipt_email", chargeRequest.getStripeEmail());
+		chargeParams.put("source", chargeRequest.getStripeToken());
+		Charge create = Charge.create(chargeParams);
+
+		Payment payment = new Payment();
+		payment.setAmount(create.getAmount());
+		payment.setChId(create.getId());
+		payment.setPaymentGatway(Gateway.CARD);
+		payment.setPaymentDate(LocalDate.now());
+		payment.setPaymentStatus(PaymentStatus.PAID);
+		payment.setReciptEmail(create.getReceiptEmail());
+		payment.setCurrency(Currency.INR);
+		User user = userRepository.findById(chargeRequest.getUserId()).get();
+		payment.setUser(user);
+		Orders o = orderRepository.findById(chargeRequest.getOrderId()).get();
+		payment.setOrders(o);
+		return paymentRepository.save(payment);
+	}
+
+
+
+}

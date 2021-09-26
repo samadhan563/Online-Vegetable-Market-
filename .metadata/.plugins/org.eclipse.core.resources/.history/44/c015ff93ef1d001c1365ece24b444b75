@@ -1,0 +1,30 @@
+package com.app.ovm.services.classes;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.ovm.dao.IUserAddressRepository;
+import com.app.ovm.dao.IUserRepository;
+import com.app.ovm.pojos.entity.User;
+import com.app.ovm.pojos.entity.UserAddress;
+import com.app.ovm.services.interfaces.IUserAddressService;
+
+public class UserAddressServiceImpl implements IUserAddressService {
+	
+	@Autowired
+	private IUserAddressRepository addressRepository;
+	@Autowired
+	private IUserRepository userRepository;
+
+	@Override
+	public UserAddress addUserAddress(UserAddress userAddress,int userId) {
+		User user = userRepository.findById(userId).get();
+		return null;
+	}
+
+	@Override
+	public UserAddress getUserAddress(int userId) {
+
+		return null;
+	}
+
+}

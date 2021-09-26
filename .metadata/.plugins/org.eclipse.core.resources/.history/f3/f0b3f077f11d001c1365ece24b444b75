@@ -1,0 +1,11 @@
+package com.app.ovm.services.interfaces;
+
+import com.app.ovm.pojos.entity.Orders;
+
+public interface IOrderService {
+
+	Orders addOrder(int userId, double totalPrice, String timeSlot, String bookingDate, int rentDays);
+
+	Orders addOrderDetails(int userId, double totalPrice);
+
+}

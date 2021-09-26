@@ -1,0 +1,15 @@
+package com.app.ovm.services.interfaces;
+
+import java.util.List;
+
+import com.app.ovm.pojos.entity.OrderDetails;
+import com.app.ovm.pojos.entity.Orders;
+
+public interface IOrderService {
+
+
+	List<OrderDetails> addOrderDetails(int userId, double totalPrice);
+
+	int addOrder(int userId, double totalPrice);
+
+}

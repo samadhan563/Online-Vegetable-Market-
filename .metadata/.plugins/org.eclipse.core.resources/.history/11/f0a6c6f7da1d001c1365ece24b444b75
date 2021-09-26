@@ -1,0 +1,25 @@
+package com.app.ovm.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.app.ovm.pojos.entity.Cart;
+
+public interface ICartRepository extends JpaRepository<Cart, Integer> {
+
+	List<Cart> getCartByUserId(int i);
+	
+	@Query(value = "select sum(r.rentPerDay) from Cart r where r.userId=:userId")
+	double getCartTotalFinalAmt(int userId);
+
+	@Query(value = "select sum(r.finalRent) from Cart r where r.userId=:userId")
+	double getCartTotalAmt(int userId);
+	
+
+	
+
+
+	void deleteByUserId(int userId);
+
+}

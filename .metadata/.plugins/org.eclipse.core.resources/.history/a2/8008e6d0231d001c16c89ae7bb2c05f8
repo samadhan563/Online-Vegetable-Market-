@@ -1,0 +1,69 @@
+package com.app.ovm.services.classes;
+
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
+import org.omg.CORBA.UserException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.ovm.dao.ICartRepository;
+import com.app.ovm.dao.IProductRepository;
+import com.app.ovm.dto.ProductCartUserIdDTO;
+import com.app.ovm.pojos.entity.Cart;
+import com.app.ovm.pojos.entity.Product;
+import com.app.ovm.services.interfaces.ICartService;
+@Service
+@Transactional
+public class CartServiceImpl implements ICartService {
+
+	@Autowired
+	private ICartRepository cartRepository;
+	
+	@Autowired
+	private IProductRepository a;
+	
+
+	@Override
+	public Cart getCartByUserId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Cart updateCartByUserId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Cart getCartByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Cart addToCart(ProductCartUserIdDTO productCartUserIdDTO) {
+		if (productCartUserIdDTO.getUserId() > 0) {
+			Optional<Product> optionalEquipment = 
+					.findById(productCartUserIdDTO.getproductId());
+			Product equipment = optionalEquipment.get();
+			Cart newRent = new Cart(userIdEquipmentIdDTO.getUserId(), equipment.getEquipmentName(),
+					// added one element to cart
+					equipment.getBrand(), 1, equipment.getRentPerDay(), equipment.getOfferDiscount(),
+					equipment.getFinalRent(), equipment.getDelayCharges(), equipment.getImage(),
+					equipment.getDecription(), equipment.getCategory().getCategoryName());
+			newRent.setUserId(userIdEquipmentIdDTO.getUserId());
+			return rentLineRepository.save(newRent);
+		} else {
+			throw new UserException("Invalid user id....");
+	}
+
+	@Override
+	public Cart removeFromRent(int rentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

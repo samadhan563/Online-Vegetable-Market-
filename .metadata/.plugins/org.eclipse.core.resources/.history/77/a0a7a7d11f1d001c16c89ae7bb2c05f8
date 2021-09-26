@@ -1,0 +1,9 @@
+package com.app.ovm.dto;
+
+public class IN {
+
+	public IN() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

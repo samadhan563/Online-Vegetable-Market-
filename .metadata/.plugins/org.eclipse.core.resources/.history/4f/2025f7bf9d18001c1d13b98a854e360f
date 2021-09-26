@@ -1,0 +1,5 @@
+package com.app.ovm.dao;
+
+public interface OrderDetailsRepository {
+
+}

@@ -1,0 +1,16 @@
+package com.app.ovm.services.classes;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
+import com.app.ovm.services.interfaces.ICartService;
+@Service
+@Transactional
+public class CartServiceImpl implements ICartService {
+
+	public CartServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

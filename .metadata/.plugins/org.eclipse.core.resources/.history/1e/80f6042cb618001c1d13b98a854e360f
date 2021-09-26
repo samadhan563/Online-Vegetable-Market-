@@ -1,0 +1,117 @@
+package com.app.ovm.pojos.entity;
+
+import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+@Entity
+public class UserProfile extends BaseEntity {
+	private String firstName;
+	private String lastName;
+	private LocalDate dateOfBirth;
+	private String contactNumber;
+	private String email;
+	private String image;
+
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id", nullable = true)
+	private User user;
+
+	@JsonIgnore
+	@OneToOne(targetEntity = UserAddress.class, mappedBy = "userProfile")
+	private UserAddress userAddress;
+
+	public UserProfile() {
+
+	}
+
+	public UserProfile(String firstName, String lastName, LocalDate dateOfBirth, String contactNumber, String email,
+			String image) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.contactNumber = contactNumber;
+		this.email = email;
+		this.image = image;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "UserProfile [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth
+				+ ", contactNumber=" + contactNumber + ", email=" + email + ", image=" + image + ", getId()=" + getId()
+				+ "]";
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.app.ovm.dto;
+
+public class PaymentDto {
+
+	public PaymentDto() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

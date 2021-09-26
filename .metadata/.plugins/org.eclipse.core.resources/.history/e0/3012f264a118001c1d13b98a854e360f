@@ -1,0 +1,7 @@
+package com.app.ovm.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ICartRepository extends JpaRepository<Cart, Integer> {
+
+}

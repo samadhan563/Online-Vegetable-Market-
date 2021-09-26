@@ -1,0 +1,6 @@
+package com.app.ovm.pojos.entity;
+
+@Entity
+public class Payment extends BaseEntity {
+
+}

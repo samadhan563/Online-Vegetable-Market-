@@ -1,0 +1,101 @@
+package com.app.ovm.pojos.entity;
+
+import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+
+import com.app.ovm.pojos.enums.Gateway;
+import com.app.ovm.pojos.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class Payment extends BaseEntity {
+
+	@NotNull
+	@Column(name = "payment_gateway", length = 20, nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Gateway paymentGateway;
+	@NotNull
+	private LocalDate paymentDate;
+	@NotNull
+	@Column(name = "payment_status", length = 20, nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Status paymentStatus;
+
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "order_id")
+	private Orders order;
+
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	public Payment() {
+	}
+
+	public Payment(@NotNull Gateway paymentGateway, @NotNull LocalDate paymentDate, @NotNull Status paymentStatus,
+			Orders order, User user) {
+		super();
+		this.paymentGateway = paymentGateway;
+		this.paymentDate = paymentDate;
+		this.paymentStatus = paymentStatus;
+		this.order = order;
+		this.user = user;
+	}
+
+	public Gateway getPaymentGateway() {
+		return paymentGateway;
+	}
+
+	public void setPaymentGateway(Gateway paymentGateway) {
+		this.paymentGateway = paymentGateway;
+	}
+
+	public LocalDate getPaymentDate() {
+		return paymentDate;
+	}
+
+	public void setPaymentDate(LocalDate paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+
+	public Status getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(Status paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	public Orders getOrder() {
+		return Orders;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "Payment [paymentGateway=" + paymentGateway + ", paymentDate=" + paymentDate + ", paymentStatus="
+				+ paymentStatus + ", order=" + order + ", user=" + user + "]";
+	}
+
+}

@@ -1,0 +1,24 @@
+package com.app.ovm.services.classes;
+
+import com.app.ovm.dao.IUserAddressRepository;
+import com.app.ovm.pojos.entity.UserAddress;
+import com.app.ovm.services.interfaces.IUserAddressService;
+
+public class UserAddressServiceImpl implements IUserAddressService {
+
+	private IUserAddressRepository addressRepository;
+	@Override
+	public UserAddress addUserAddress(UserAddress userAddress) {
+		
+		return null;
+	}
+
+	@Override
+	public UserAddress getUserAddress(int userId) {
+		
+		return null;
+	}
+
+
+
+}

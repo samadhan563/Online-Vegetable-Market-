@@ -1,0 +1,45 @@
+package com.app.ovm.services.classes;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.ovm.dao.ICategoryRepository;
+import com.app.ovm.pojos.entity.Category;
+import com.app.ovm.services.interfaces.ICategoryService;
+
+public class CategoryServiceImpl implements ICategoryService {
+	@Autowired
+	private ICategoryRepository categoryRepository;
+	@Override
+	public List<Category> fetchAllCategorys() {
+		
+		return categoryRepository.findAll();
+	}
+
+	@Override
+	public Category fetchCategoryById(int categoryId) {
+		return categoryRepository.findById(categoryId).get();
+	}
+
+	@Override
+	public Category addCategory(Category category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Category updateOldCategory(Category Category, int categoryId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Category deleteCategory(int categoryId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+}

@@ -1,0 +1,20 @@
+package com.app.ovm.services.interfaces;
+
+import com.app.ovm.dto.ProductCartUserIdDTO;
+import com.app.ovm.pojos.entity.Cart;
+
+public interface ICartService {
+
+	Cart getCartByUserId();
+
+	Cart updateCartByUserId();
+
+	Cart getCartByUserId(int userId);
+
+	Cart addToCart(ProductCartUserIdDTO productCartUserIdDTO);
+
+	Cart removeFromRent(int rentId);
+	
+	
+
+}
