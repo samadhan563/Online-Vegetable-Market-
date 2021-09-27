@@ -23,9 +23,9 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IUserProfileRepository userProfileRepository;
 
+	
 	@Override
 	public User autenticateUser(LoginRequest loginRequest) {
-
 		return userRepository.autenticateUser(loginRequest.getUserName(), loginRequest.getPassword()).get();
 	}
 
@@ -43,6 +43,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User updateOldUser(User user,int userId) {
+		
 		User oldUser = userRepository.findById(userId).get();
 		return oldUser;
 	}
@@ -50,9 +51,12 @@ public class UserServiceImpl implements IUserService {
 	
 	@Override
 	public UserProfile getUserProfile(int userId) {
-		User user = userRepository.findById(userId).get();
+		System.out.println(userId);
+		System.out.println(userRepository.findById(userId).get());
+		User user=userRepository.findById(userId).get();
 		System.out.println(user);
-		 return userProfileRepository.getUserProfile(user).get();
+		return userProfileRepository.findByUser(user).get();
+//		 return userProfileRepository.getUserProfile(user).get();
 		
 	}
 	

@@ -39,6 +39,7 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public Product updateOldProduct(Product product, int productId) {
 		Product oldProduct = productRepository.findById(productId).get();
+		oldProduct.setId(productId);
 		oldProduct.setProductName(product.getProductName());
 		oldProduct.setImage(product.getImage());
 		oldProduct.setDiscountOffer(product.getDiscountOffer());
@@ -57,10 +58,7 @@ public class ProductServiceImpl implements IProductService {
 
 	@Override
 	public List<Product> fetchEquipmentByCategoryId(int catId) {
-		
 		 return productRepository.findByCategory(categoryRepository.findById(catId).get());
 	}
-
-
 
 }

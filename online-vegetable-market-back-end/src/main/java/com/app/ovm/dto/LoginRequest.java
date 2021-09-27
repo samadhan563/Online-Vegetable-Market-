@@ -1,7 +1,5 @@
 package com.app.ovm.dto;
 
-import javax.persistence.Column;
-
 public class LoginRequest {
 	private String userName;
 	private String password;

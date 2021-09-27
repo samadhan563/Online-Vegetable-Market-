@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProductServices from '../../Services/Admin Services/ProductServices';
+import AdminNavbar from './AdminNavbar'
 
 const ViewProductsDetails = (props) => {
     const [product, setProduct] = useState([]);
@@ -29,6 +30,7 @@ const ViewProductsDetails = (props) => {
 
     return (
         <div className="main ml-0 mr-0" >
+        <AdminNavbar/>
             <div className="row ">
                 <div className="col center mt-2">
                     <div className="card border-dark rounded">

@@ -1,9 +1,0 @@
-package com.app.ovm.dao;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.app.ovm.pojos.entity.Orders;
-
-public interface IOrderRepository extends JpaRepository<Orders, Integer> {
-
-}

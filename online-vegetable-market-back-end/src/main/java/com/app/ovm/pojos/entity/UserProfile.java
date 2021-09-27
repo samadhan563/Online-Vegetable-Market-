@@ -141,6 +141,7 @@ public class UserProfile extends BaseEntity {
 		this.userAddress = userAddress;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "UserProfile [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber="

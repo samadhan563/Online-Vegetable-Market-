@@ -1,9 +1,0 @@
-package com.app.ovm.pojos.entity;
-
-public class Orders extends BaseEntity {
-
-	public Orders() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

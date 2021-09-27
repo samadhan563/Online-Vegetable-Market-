@@ -29,7 +29,7 @@ public class OrderDetails extends BaseEntity {
 	private int availableQuantity;
 
 	@NotNull
-	@Column(length = 40)
+	@Column(length = 200)
 	private String image;
 
 	private double finalPrice;

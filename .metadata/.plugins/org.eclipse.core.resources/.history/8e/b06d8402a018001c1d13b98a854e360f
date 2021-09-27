@@ -1,5 +1,0 @@
-package com.app.ovm.pojos.enums;
-
-public enum Gateway {
-
-}

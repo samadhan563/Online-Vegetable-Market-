@@ -5,6 +5,7 @@ import AdminNavbar from './AdminNavbar';
 
 const UpdateProductComponent = (props) => {
     const [id, setId] = useState(props.match.params.id);
+    const [img, setImg] = useState('');
     const [product, setProduct] = useState({
         productName: '',
         availableQuantity: '',
@@ -29,13 +30,14 @@ const UpdateProductComponent = (props) => {
         const formData = new FormData();
         formData.append('file', event.target.files[0]);
         ProductServices.fileUpload(formData).then(res => {
-            res.data.result != null && setProduct((preValue) => {
+            res.data != null && setProduct((preValue) => {
                 return {
                     ...preValue,
                     ['image']: res.data,
                 };
             })
-            console.log(res.data.result);
+             setImg(res.data);
+            console.log(res.data);
         });
     }
 
@@ -88,12 +90,12 @@ const UpdateProductComponent = (props) => {
             discountOffer: product.discountOffer,
             finalPrice: product.finalPrice,
             description: product.description,
-            image: product.image,
+            image: img,
         };
         console.log('product => ' + JSON.stringify(prod))
-        ProductServices.AddProductByCategory(id, prod).then(res => {
-            res.data.result !== null && alert(res.data.message + "😃");
-            res.data.result === null && alert(res.data.message + "🙃");
+        ProductServices.updateProduct(id, prod).then(res => {
+            res.data!== null && alert(res.data.message + "😃");
+            res.data=== null && alert(res.data.message + "🙃");
             props.history.push(`/product-under-category/${id}`)
         });
     }

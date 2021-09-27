@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;online-vegetable-market-back-end&apos;&#x0D;&#x0A;- Original project: &apos;online-vegetable-market-back-end&apos;&#x0D;&#x0A;- Original element: &apos;com.app.ovm.services.classes.UserProfileServiceImpl.java&apos;" description="Delete element" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.app.ovm.services.classes{UserProfileServiceImpl.java" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1632663482066" subPackages="false" version="1.0"/>
+</session>

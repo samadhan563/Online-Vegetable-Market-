@@ -1,8 +1,0 @@
-package com.app.ovm.services.classes;
-
-import com.app.ovm.services.interfaces.IUserProfileService;
-
-public class UserProfileServiceImpl implements IUserProfileService {
-
-
-}

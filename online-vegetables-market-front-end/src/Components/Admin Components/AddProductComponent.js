@@ -9,6 +9,7 @@ const AddProductComponent = (props) => {
 
     const [id, setId] = useState(props.match.params.id);
     const [categories, setCategories] = useState([]);
+   const [img, setImg] = useState('');
     const [product, setProduct] = useState({
         productName: '',
         availableQuantity: '',
@@ -33,12 +34,13 @@ const AddProductComponent = (props) => {
         const formData = new FormData();
         formData.append('file', event.target.files[0]);
         ProductServices.fileUpload(formData).then(res => {
-            res.data.result != null && setProduct((preValue) => {
+            res.data != null && setProduct((preValue) => {
                 return {
                     ...preValue,
                     ['image']: res.data,
                 };
             })
+            setImg(res.data);
             console.log(res.data);
         });
     }
@@ -73,7 +75,7 @@ const AddProductComponent = (props) => {
             discountOffer: product.discountOffer,
             finalPrice: product.finalPrice,
             description: product.description,
-            image: product.image,
+            image: img,
         };
         console.log('saveProduct => ' + JSON.stringify(saveProduct))
         ProductServices.AddProductByCategory(id, saveProduct).then(res => {

@@ -13,4 +13,6 @@ public interface IUserProfileRepository extends JpaRepository<UserProfile, Integ
 	@Query(value = "select u from UserProfile u where u.user=:user")
 	Optional<UserProfile> getUserProfile(User user);
 
+	Optional<UserProfile> findByUser(User user);
+
 }

@@ -43,9 +43,9 @@ const ShowAllCategory = (props) => {
 
             formData.append('file', categoryImage);
             CategoryServices.addCategory(categoryName, formData).then(res => {
-                res.data.result === null && alert("Failed to add......");
-                res.data.result !== null && window.location.reload();
-                console.log(res.data.result);
+                res.data === null && alert("Failed to add......");
+                res.data !== null && window.location.reload();
+                console.log(res.data);
             });
         }
     }

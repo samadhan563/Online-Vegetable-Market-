@@ -5,7 +5,22 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2021-09-23T23:00:00Z</updated>
+  <updated>2021-09-27T16:38:08Z</updated>
+  <entry>
+    <title>Spring Initializr 0.11.0 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2021/09/27/spring-initializr-0-11-0-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Stéphane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2021-09-27:4558</id>
+    <updated>2021-09-27T16:38:08Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I’m happy to announce that Spring Initializr 0.11.0 has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href="https://github.com/spring-io/initializr/releases/tag/v0.11.0"&gt;15 fixes, improvements and dependency upgrades&lt;/a&gt;.&lt;br/&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;p&gt;For full &lt;a href="https://github.com/spring-io/initializr/wiki/Spring-Initializr-0.11-Release-Notes#upgrading-from-initializr-010"&gt;upgrade instructions&lt;/a&gt; and &lt;a href="https://github.com/spring-io/initializr/wiki/Spring-Initializr-0.11-Release-Notes#new-and-noteworthy"&gt;new and noteworthy&lt;/a&gt; features please see the &lt;a href="https://github.com/spring-io/initializr/wiki/Spring-Initializr-0.11-Release-Notes"&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-io/initializr"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/initializr/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/initializr/docs/0.11.0/reference/html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-initializr"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-io/initializr"&gt;Gitter&lt;/a&gt;&lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>A Bootiful Podcast: Spring web legend Rossen Stoyanchev on RSocket, GraphQL and more</title>
     <link rel="alternate" href="https://spring.io/blog/2021/09/23/a-bootiful-podcast-spring-web-legend-rossen-stoyanchev-on-rsocket-graphql-and-more" />
@@ -1316,19 +1331,6 @@ Let me know if you would like me to cover specific topics.&lt;/p&gt;
   &lt;li&gt;&lt;a href="https://tanzu.vmware.com/content/blog/vmware-tanzu-enterprise-support-spring-boot-native-applications-bellsoft-liberica-nik"&gt;VMware Tanzu Adds Enterprise Support for Spring Boot Native Applications Compiled with BellSoft Liberica NIK&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://www.infoworld.com/article/3631384/vmware-s-new-tanzu-platform-aims-to-unify-kubernetes-development.amp.html?__twitter_impression=true"&gt;VMware’s new Tanzu platform aims to unify Kubernetes development&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
-  </entry>
-  <entry>
-    <title>A Bootiful Podcast: SpringOne 2021 and Jackson and Woodstox creator Tatu Saloranta</title>
-    <link rel="alternate" href="https://spring.io/blog/2021/09/02/a-bootiful-podcast-springone-2021-and-jackson-and-woodstox-creator-tatu-saloranta" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2021-09-03:4532</id>
-    <updated>2021-09-02T23:00:00Z</updated>
-    <content type="html">&lt;p&gt;Hi, Spring fans! In this installment, &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman )&lt;/a&gt; breathlessly recaps some of the exciting news from the just-finished SpringOne 2021 event and then talks to Jackson and Woodstox creator &lt;a href="http://twitter.com/"&gt;Tatu Saloranta (@cowtowncoder)&lt;/a&gt;&lt;/p&gt;
-&lt;iframe title="SpringOne 2021 and Tatu Saloranta" allowtransparency="true" height="150" width="100%" style="border: none; min-width: min(100%, 430px);" scrolling="no" data-name="pb-iframe-player" src="https://www.podbean.com/player-v2/?i=k8gh5-10ce9fe-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;btn-skin=7"&gt;&lt;/iframe&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
 </feed>

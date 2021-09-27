@@ -66,13 +66,6 @@ const AdminNavbar = () => {
                                 </Link>
                             </li>
                         }
-                        {st == true &&
-                            <li className="nav-item " >
-                                <Link className="nav-link text-light" to="/view-profile-page" >
-                                    <i class="fas fa-id-card"></i><img src="{icon}" style={{ width: "35px" }}></img>
-                                </Link>
-                            </li>
-                        }
                     </ul>
                 </div>
             </nav>

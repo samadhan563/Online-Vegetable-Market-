@@ -88,7 +88,7 @@ function AllProducts(props) {
                         </div>
 
                         <div className="card-body h-100">
-                            <div className="row row-cols-1 row-cols-md-3 g-4 ">
+                            <div className="row row-cols-1 row-cols-md-4 g-4 ">
                                 {
                                     products.map(product =>
                                         <div key={product.id}>
@@ -101,13 +101,13 @@ function AllProducts(props) {
                                                         <div class="card-body">
                                                             <h4 className="card-title text-center">{product.productName}</h4>
                                                             <h5 className="card-title text-center text-danger"><strike><i class="fas fa-rupee-sign"></i>{product.pricePerKg}</strike></h5>
-                                                            <h5 className="card-title text-center btn btn-success btn-md" style={{ height: "40px", borderRadius: "70px", paddingRight: "30px", paddingLeft: "30px" }}>{product.offerDiscount} %</h5>
+                                                            <h5 className="card-title text-center btn btn-success btn-md" style={{ height: "40px", borderRadius: "70px", paddingRight: "30px", paddingLeft: "30px" }}>{product.discountOffer} %</h5>
                                                             <h5 className="card-title text-center"><i class="fas fa-rupee-sign"></i>{product.finalPrice} <i class="fas fa-calendar-day"></i></h5>
 
                                                         </div>
                                                     </button>
                                                     {(JSON.parse(window.localStorage.getItem("cart_size")) > 0) && <button className="btn btn-outline-info custom-btn btn-lg ml-2 mr-2 mt-2 mb-2 h-120" onClick={buyNow} >Buy Now <i class="fas fa-arrow-circle-right"></i></button>}
-                                                    <button className="btn btn-outline-success custom-btn btn-lg ml-2 mr-2 mt-2 mb-2 h-120" onClick={(e) => addQuantity(e, product.id)} ><i class="fas fa-cart-plus"></i> | Add To Rent</button>
+                                                    <button className="btn btn-outline-success custom-btn btn-lg ml-2 mr-2 mt-2 mb-2 h-120" onClick={(e) => addQuantity(e, product.id)} ><i class="fas fa-cart-plus"></i> | Add To Cart</button>
                                                     <button className="btn btn-outline-info custom-btn btn-lg ml-2 mr-2 mt-0 mb-2" onClick={() => viewProduct(product.id, product.productName)}><i class="fas fa-info-circle"></i> | View</button>
                                                 </div>
                                             </div>

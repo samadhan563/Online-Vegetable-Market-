@@ -21,7 +21,7 @@ public class Cart extends BaseEntity {
 	private int availableQuantity;
 
 	@NotNull
-	@Column(length = 40)
+	@Column(length = 200)
 	private String image;
 
 	private double finalPrice;
@@ -30,7 +30,7 @@ public class Cart extends BaseEntity {
 	private double discountOffer;
 
 	@NotNull
-	@Column(length = 400, nullable = false)
+	@Column(length = 200, nullable = false)
 	private String description;
 
 	@JsonIgnoreProperties
