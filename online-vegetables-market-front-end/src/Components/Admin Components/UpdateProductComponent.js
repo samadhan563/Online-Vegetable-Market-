@@ -36,7 +36,7 @@ const UpdateProductComponent = (props) => {
                     ['image']: res.data,
                 };
             })
-             setImg(res.data);
+             setImg(res.data!=null?res.data:product.image);
             console.log(res.data);
         });
     }
@@ -90,7 +90,7 @@ const UpdateProductComponent = (props) => {
             discountOffer: product.discountOffer,
             finalPrice: product.finalPrice,
             description: product.description,
-            image: img,
+            image: (img!='')?img:product.image,
         };
         console.log('product => ' + JSON.stringify(prod))
         ProductServices.updateProduct(id, prod).then(res => {
