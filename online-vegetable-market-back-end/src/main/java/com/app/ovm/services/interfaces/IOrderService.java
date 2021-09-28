@@ -28,4 +28,10 @@ public interface IOrderService {
 
 	Payment getPaymentDetailsByOrderId(int orderId);
 
+	List<Orders> loadAllOrders();
+
+	Orders acceptOrder(int id) throws Exception;
+
+	Orders deliveredOrder(int id) throws Exception;
+
 }

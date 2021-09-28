@@ -24,6 +24,8 @@ import ProductsDetails from './Components/CommonComponents/ViewProductsDetails';
 import AdminHomePage from './Components/Admin Components/AdminHomePage';
 import ShowAllProducts from "./Components/Admin Components/ShowAllProducts";
 import PageNotFound from "./Components/General Components/PageNotFound";
+import AllOrders from "./Components/Admin Components/AllOrders";
+import SpecifiedOrderDetails from './Components/Admin Components/SpecifiedOrderDetails';
 function App() {
   return (
     <div>
@@ -72,6 +74,8 @@ function App() {
                 <Route path='/admin-product-under-category/:id' component={ShowAllProductsUnderCategory} />
                 <Route path='/view-product-details/:id' component={ViewProductsDetails} />
                 <Route path='/update-product-details/:id' component={UpdateProductComponent} />
+                <Route path='/all-orders' component={AllOrders} />
+                <Route path='/specific-order-details/:id' component={SpecifiedOrderDetails} />
                 <Route path='/**' component={PageNotFound} />
                 
           </Switch>

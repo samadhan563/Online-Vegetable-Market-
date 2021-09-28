@@ -87,7 +87,7 @@ public class UserServiceImpl implements IUserService {
 		User user = userRepository.findById(userId).get();
 
 		System.out.println(user);
-		UserProfile validatedUser = new UserProfile();
+		UserProfile validatedUser =  userProfileRepository.findByUser(user).get();
 		validatedUser.setFirstName(newUser.getFirstName());
 		validatedUser.setLastName(newUser.getLastName());
 		validatedUser.setDateOfBirth(newUser.getDateOfBirth());

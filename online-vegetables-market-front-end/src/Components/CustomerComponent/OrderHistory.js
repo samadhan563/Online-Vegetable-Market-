@@ -18,7 +18,7 @@ function OrderHistory(props) {
                 res.data != null && alert("Order Canceld");
                 res.data != null && window.location.reload();
             }
-        }).catch(err=>{
+        }).catch(err => {
             alert("Sorry you can't cancel order");
         });
     }
@@ -42,14 +42,14 @@ function OrderHistory(props) {
 
     return (
         <div>
-        <Navbar />
+            <Navbar />
             <div className="row ml-2 mt-2 mb-2 mr-2 ">
                 <div className="col mt-0">
 
                     <div className="card-mb-3 mt-0 content">
                         <div style={{ backgroundColor: "lightgrey" }}>
                             <br />
-                            <h2 className="text-center font-weight-bold">Booking History </h2>
+                            <h2 className="text-center font-weight-bold">Orders History </h2>
                             <hr />
                         </div>
 
@@ -74,11 +74,12 @@ function OrderHistory(props) {
                                                     (order) =>
                                                         <tr key={order.id}>
                                                             <td>{++counter}</td>
-                                                            <td>{order.orderDate}</td>                                                                                                                       <td>{order.orderstatus}</td>
+                                                            <td>{order.orderDate}</td>
                                                             <td>{order.totalPrice}</td>
                                                             <td>{order.orderDeliveryStatus}</td>
 
                                                             <td>
+                                                               
                                                                 <button className="btn btn-outline-danger" style={{ borderRadius: "10px" }} onClick={() => cancelOrder(order.id)} >Cancel<i class="fas fa-trash"></i></button>
                                                                 <button className="btn btn-outline-info ml-2" style={{ borderRadius: "10px" }} onClick={() => viewOrderDetails(order.id)} >View <i class="fas fa-info-circle"></i></button>
                                                             </td>

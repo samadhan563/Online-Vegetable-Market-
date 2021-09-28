@@ -14,7 +14,7 @@ const UpdateProfilePage = (props) => {
         profileImage: "",
         message: "",
     })
-    const [imageUrl, setImageUrl] = useState("")
+    const [imageUrl, setImageUrl] = useState(window.localStorage.getItem("user_image"))
 
     const onChange = (event) => {
         setUpdateStatus(true)
@@ -40,6 +40,7 @@ const UpdateProfilePage = (props) => {
         UserServices.fileUpload(formData).then(res => {
             console.log(res.data)
             res.data != null && setImageUrl(res.data);
+            res.data != null && window.localStorage.setItem("user_image", res.data);
         });
     }
 
@@ -60,7 +61,16 @@ const UpdateProfilePage = (props) => {
         };
         UserServices.updateProfile(window.localStorage.getItem("user_id"), saveUser).then((res) => {
             res.data != null && setUserDetail(res.data);
-            !res.data && window.localStorage.setItem("user_image", res.data.result.imageUrl);
+            let user = res.data;
+            user != null && window.localStorage.setItem("user_fname", user.firstName);
+            user != null && window.localStorage.setItem("user_lname", user.lastName);
+            user != null && window.localStorage.setItem("user_email", user.email);
+            user != null && window.localStorage.setItem("user_dob", user.dateOfBirth);
+            user != null && window.localStorage.setItem("user_phone", user.phoneNumber);
+            user != null && window.localStorage.setItem("user_image", user.profileImage);
+            res.data != null && alert("Updated");
+            res.data == null && alert("Updation is failed");
+            res.data != null && window.location.reload();
         });
 
     }
@@ -69,7 +79,7 @@ const UpdateProfilePage = (props) => {
     }, [])
     return (
         <div>
-        <Navbar />
+            <Navbar />
             <div className="row ml-2 mt-2 mb-2 mr-2 ">
                 <div className="col mt-0">
                     <div className="card-mb-3 mt-0 content">

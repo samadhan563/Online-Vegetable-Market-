@@ -74,7 +74,7 @@ const ViewProfilePage = (props) => {
                     <div className="card-mb-3 mt-0 content">
                         <div style={{ backgroundColor: "lightgrey" }}>
                             <br />
-                            <h2 className="text-center font-weight-bold">Update profile </h2>
+                            <h2 className="text-center font-weight-bold">View profile </h2>
                             <hr />
                         </div>
                         <div className="card-body mt-n5 ">
@@ -86,9 +86,7 @@ const ViewProfilePage = (props) => {
                                             alt="profile-img"
                                             className="profile-img-card rounded"
                                         />
-                                        <div className="text-center mt-2 ml-5">
-                                            <input type="file" placeholder="" onChange={changeImageHandler} />
-                                        </div>
+                                       
                                         {updateStatus && <button className='btn btn-outline-info mt-2' type='submit' onClick={handleSubmit}><i class="fas fa-upload"></i> Upload Image</button>}
                                     </div>
                                     <div className="form-input row mt-4">
@@ -189,7 +187,7 @@ const ViewProfilePage = (props) => {
                                             {/* {userDetail.errors.phoneNumber && <p className="alert alert-danger  ">{userDetail.errors.phoneNumber}</p>} */}
                                         </div>
                                     </div>
-                                    {updateStatus && <button className='btn btn-success ml-3 mt-4' type='submit' onClick={handleSubmit}><i class="fas fa-upload"></i> Update</button>}
+                                    
                                 </form>
                             </div>
                         </div>

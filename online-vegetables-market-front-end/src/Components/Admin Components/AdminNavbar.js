@@ -49,7 +49,12 @@ const AdminNavbar = () => {
                                 <i class="fab fa-product-hunt"></i>Products
                             </Link>
                         </li>
-
+                        <li className="nav-item">
+                            <Link className="nav-link text-light" to="/all-orders" exact>
+                                <i class="fab fa-product-hunt"></i>Orders
+                            </Link>
+                        </li>
+                        
 
                         {st != true &&
                             <li className="nav-item">

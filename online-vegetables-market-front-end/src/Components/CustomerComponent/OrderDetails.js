@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AllServices from '../../Services/AllServices';
 import Navbar from './../Animation Component/Navbar';
+import AdminNavbar from './../Admin Components/AdminNavbar';
 
 function OrderDetails(props) {
     let counter = 0;
@@ -34,7 +35,7 @@ function OrderDetails(props) {
 
     return (
         <div>
-        <Navbar />
+        <AdminNavbar />
             <div className="row ml-2 mt-2 mb-2 mr-2 ">
                 <div className="col mt-0">
                     <div className="card border mt-5 ">

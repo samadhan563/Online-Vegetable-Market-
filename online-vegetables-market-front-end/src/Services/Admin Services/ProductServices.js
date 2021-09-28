@@ -36,5 +36,19 @@ class ProductServices {
         }
         return await axios.post('http://localhost:8080/api/image/upload', file, config);
     }
+
+    loadAllOrders(){
+        return axios.get("http://localhost:8080/api/order/fetch-all-orders" );
+    }
+    acceptOrder(id){
+        return axios.get("http://localhost:8080/api/order/accept-order/"+id );
+    }
+
+    deliveredOrder(id){
+        return axios.get("http://localhost:8080/api/order/delived-order/"+id );
+    }
+
+
+
 }
 export default new ProductServices();

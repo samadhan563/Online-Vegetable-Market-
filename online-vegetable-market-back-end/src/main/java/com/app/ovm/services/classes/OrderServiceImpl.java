@@ -187,10 +187,44 @@ public class OrderServiceImpl implements IOrderService {
 		return detailsRepository.findBySelectedOrder(booking);
 
 	}
-	
+
 	@Override
 	public Payment getPaymentDetailsByOrderId(int orderId) {
-		return  paymentRepository.findByOrders(orderRepository.findById(orderId).get());
+		return paymentRepository.findByOrders(orderRepository.findById(orderId).get());
+	}
+
+	@Override
+	public List<Orders> loadAllOrders() {
+
+		return orderRepository.findAll();
+	}
+
+	@Override
+	public Orders acceptOrder(int id) throws Exception {
+		Orders booking = orderRepository.findById(id).get();
+		System.out.println(booking);
+		if (booking.getOrderDeliveryStatus() == OrderStatus.PENDING
+				&& (booking.getOrderDeliveryStatus() != OrderStatus.CANCELD)) {
+
+			booking.setOrderDeliveryStatus(OrderStatus.ACCEPTED);
+			orderRepository.save(booking);
+			return booking;
+		}
+		throw new Exception("Failed to cancel booking");
+	}
+
+	@Override
+	public Orders deliveredOrder(int id) throws Exception {
+		Orders booking = orderRepository.findById(id).get();
+		System.out.println(booking);
+		if (booking.getOrderDeliveryStatus() == OrderStatus.ACCEPTED
+				&& (booking.getOrderDeliveryStatus() != OrderStatus.DELIVERED)) {
+
+			booking.setOrderDeliveryStatus(OrderStatus.DELIVERED);
+			orderRepository.save(booking);
+			return booking;
+		}
+		throw new Exception("Failed to cancel booking");
 	}
 
 }
