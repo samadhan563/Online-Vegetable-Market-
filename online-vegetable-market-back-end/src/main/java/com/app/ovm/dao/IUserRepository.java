@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.app.ovm.pojos.entity.User;
-@Repository
+
 public interface IUserRepository extends JpaRepository<User, Integer> {
 
 	@Query(value = "select u from User u where u.userName=:userName and u.password=:password")

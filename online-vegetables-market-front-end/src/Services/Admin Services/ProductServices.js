@@ -26,7 +26,7 @@ class ProductServices {
         return axios.get(USER_API_BASE_URL + "/fetch-product-by-cat-id/" + catId);
     }
     deleteProduct(prodId) {
-        return axios.delete(USER_API_BASE_URL + "/remove-product/" + prodId);
+        return axios.delete(USER_API_BASE_URL + "/delete-old-product/" + prodId);
     }
     async fileUpload(file) {
         const config = {

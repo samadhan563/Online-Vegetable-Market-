@@ -1,9 +1,0 @@
-package com.app.ovm.services.classes;
-
-import com.app.ovm.services.interfaces.ICategoryService;
-
-public class CategoryServiceImpl implements ICategoryService {
-
-	
-
-}

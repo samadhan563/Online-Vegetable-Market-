@@ -57,6 +57,8 @@ const UserProfile = (props) => {
         UserServices.addUserProfile( saveUser).then((res) => {
             res.data != null && setUserDetail(res.data);
             !res.data && window.localStorage.setItem("user_image", res.data.imageUrl);
+            res.data != null && alert("Updated");
+            res.data!=null&&props.history.push(`/view-profile-page`);
         });
 
     }
@@ -84,7 +86,7 @@ const UserProfile = (props) => {
                                         <div className="text-center mt-2 ml-5">
                                             <input type="file" placeholder="" onChange={changeImageHandler} />
                                         </div>
-                                        {updateStatus && <button className='btn btn-outline-info mt-2' type='submit' onClick={handleSubmit}><i class="fas fa-upload"></i> Upload Image</button>}
+                                        {/* {updateStatus && <button className='btn btn-outline-info mt-2' type='submit' onClick={handleSubmit}><i class="fas fa-upload"></i> Upload Image</button>} */}
                                     </div>
                                     <div className="form-input row mt-4">
                                         <label className="col-sm-3 col-form-label col-form-label-lg ml-3">User Name</label>

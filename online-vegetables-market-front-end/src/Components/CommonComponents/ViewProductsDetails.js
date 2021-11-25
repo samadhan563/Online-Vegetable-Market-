@@ -82,7 +82,7 @@ const ViewProductsDetails = (props) => {
 
 
     const buyNow = () => {
-        props.history.push(`/rent-line`);
+        props.history.push(`/cart`);
     }
 
     const backPage = () => {

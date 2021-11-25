@@ -41,7 +41,7 @@ public class Payment extends BaseEntity {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_id")
 	private Orders orders;
-
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "user_id")
 	private User user;

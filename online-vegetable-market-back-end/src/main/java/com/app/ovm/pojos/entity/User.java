@@ -30,14 +30,14 @@ public class User extends BaseEntity {
 	private UserRole userRole = UserRole.CUSTOMER;
 	private LocalDate registrationDate = LocalDate.now();
 	private boolean active = true;
-
+	@JsonIgnore
 	@OneToOne(targetEntity = UserProfile.class, mappedBy = "user")
 	private UserProfile userProfile;
 
 	@JsonIgnore
 	@OneToMany(targetEntity = Orders.class, mappedBy = "selectedUser")
 	private List<Orders> order = new ArrayList<>();
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "selectedUser", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, orphanRemoval = true)
 	List<OrderDetails> orderDetails = new ArrayList<>();
 

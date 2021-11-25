@@ -45,7 +45,7 @@ public class OrderDetails extends BaseEntity {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", nullable = true)
 	private User selectedUser;
-
+	@JsonIgnore
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_id", nullable = false)

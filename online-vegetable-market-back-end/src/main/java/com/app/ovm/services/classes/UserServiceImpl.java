@@ -52,11 +52,11 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public UserProfile getUserProfile(int userId) {
 		System.out.println(userId);
-		System.out.println(userRepository.findById(userId).get());
-		User user=userRepository.findById(userId).get();
+//		System.out.println(userRepository.findById(userId).get());
+		User user = userRepository.findById(userId).get();
 		System.out.println(user);
-		return userProfileRepository.findByUser(user).get();
-//		 return userProfileRepository.getUserProfile(user).get();
+//		return userProfileRepository.findByUser(user).get();
+		 return userProfileRepository.getUserProfile(user).get();
 		
 	}
 	
@@ -77,8 +77,8 @@ public class UserServiceImpl implements IUserService {
 		validatedUser.setProfileImage(newUser.getProfileImage());
 		System.out.println(validatedUser + "   " + newUser.getProfileImage().length());
 		UserProfile profile = userProfileRepository.save(validatedUser);
-		user.setUserProfile(validatedUser);
-		userRepository.save(user);
+//		user.setUserProfile(validatedUser);
+//		userRepository.save(user);
 		return profile;
 	}
 
@@ -98,8 +98,8 @@ public class UserServiceImpl implements IUserService {
 		validatedUser.setProfileImage(newUser.getProfileImage());
 		System.out.println(validatedUser + "   " + newUser.getProfileImage().length());
 		UserProfile profile = userProfileRepository.save(validatedUser);
-		user.setUserProfile(validatedUser);
-		userRepository.save(user);
+//		user.setUserProfile(validatedUser);
+//		userRepository.save(user);
 		return profile;
 	}
 

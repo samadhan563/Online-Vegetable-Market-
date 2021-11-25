@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +36,7 @@ public class ProductController {
 	@GetMapping("/get-product-by-id/{productId}")
 	public ResponseEntity<?> fetchProductByIroddud(@PathVariable int productId) {
 		try {
-			return new ResponseEntity<>(productService.fetchProductById(productId), HttpStatus.OK);
+			return new ResponseEntity<>(productService.deleteProduct(productId), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -61,10 +62,10 @@ public class ProductController {
 		}
 	}
 
-	@PostMapping("/delete-old-product/{productId}")
-	public ResponseEntity<?> deleteOldProduct(@RequestBody Product product, @PathVariable int productId) {
+	@DeleteMapping("/delete-old-product/{productId}")
+	public ResponseEntity<?> deleteOldProduct( @PathVariable int productId) {
 		try {
-			System.out.println(product);
+//			System.out.println(product);
 			return new ResponseEntity<>(productService.deleteProduct(productId), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

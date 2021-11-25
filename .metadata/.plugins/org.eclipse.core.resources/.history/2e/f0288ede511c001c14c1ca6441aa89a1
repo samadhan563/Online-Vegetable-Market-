@@ -1,7 +1,0 @@
-package com.app.ovm.services.classes;
-
-import com.app.ovm.services.interfaces.ICloudinaryService;
-
-public class CloudinaryServiceImpl implements ICloudinaryService {
-
-}
